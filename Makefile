@@ -1,7 +1,8 @@
 REGISTRY ?= "mwrona/"
 IMAGE_NAME ?= gh-runner
 PLATFORMS ?= linux/x86_64
-VERSION ?= "0.0.1"
+VERSION ?= "0.0.2"
+DEV_VERSION ?= "dev1"
 
 .PHONY: build
 build:
@@ -15,6 +16,10 @@ build:
 push:
 	@docker push ${REGISTRY}${IMAGE_NAME}:latest
 	@docker push ${REGISTRY}${IMAGE_NAME}:${VERSION}
+
+.PHONY: push-dev
+push-dev:
+	@docker push ${REGISTRY}${IMAGE_NAME}:${VERSION}-${DEV_VERSION}
 
 .PHONY: start
 start:

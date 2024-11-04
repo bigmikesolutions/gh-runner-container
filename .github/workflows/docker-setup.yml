@@ -1,0 +1,30 @@
+name: "Check whether new image fulfills all requirements"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  install_docker:
+    runs-on: self-hosted
+
+    services:
+      docker:
+        image: docker:stable-dind
+        options: --privileged
+        volumes:
+          - /var/lib/docker
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Docker commands
+        run: |
+          docker info    
+          docker run hello-world
