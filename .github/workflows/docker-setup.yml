@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  install_docker:
+  check_image:
     runs-on: self-hosted
 
     services:
