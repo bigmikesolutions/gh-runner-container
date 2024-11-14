@@ -11,7 +11,7 @@ on:
 
 jobs:
   check_image:
-    runs-on: self-hosted
+    runs-on: Development
 
     services:
       docker:

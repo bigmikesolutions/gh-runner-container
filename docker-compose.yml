@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    platform: linux/x86_64
+    container_name: gh-runner
+    privileged: true
+    environment:
+      - ORGANIZATION=bigmikesolutions
+      - RUNNER_GROUP=Development
+      - RUNNER_NAME=michal-local-1
+      - ACCESS_TOKEN=${ACCESS_TOKEN}
