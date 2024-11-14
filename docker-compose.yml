@@ -10,4 +10,5 @@ services:
       - ORGANIZATION=bigmikesolutions
       - RUNNER_GROUP=Development
       - RUNNER_NAME=michal-local-1
+      - RUNNER_LABELS=developmet
       - ACCESS_TOKEN=${ACCESS_TOKEN}

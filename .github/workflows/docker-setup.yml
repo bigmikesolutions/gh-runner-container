@@ -11,7 +11,7 @@ on:
 
 jobs:
   check_image:
-    runs-on: Development
+    runs-on: development
 
     services:
       docker:
