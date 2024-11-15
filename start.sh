@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/docker/actions-runner
+cd /home/github/actions-runner
 
 ./config.sh --url https://github.com/${ORGANIZATION} --token ${ACCESS_TOKEN} --name ${RUNNER_NAME} --runnergroup ${RUNNER_GROUP} --labels ${RUNNER_LABELS}
 

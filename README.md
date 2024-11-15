@@ -2,6 +2,8 @@
 
 Container for GitHub hosted runner. 
 
+Set-up allows to run GitHub runner on self-host machine as a docker container instead of running it directly on OS.
+
 ## Usage
 
 1) Go to organization settings -> actions -> runners -> new runner

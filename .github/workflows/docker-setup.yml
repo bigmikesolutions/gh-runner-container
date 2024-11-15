@@ -13,13 +13,6 @@ jobs:
   check_image:
     runs-on: development
 
-    services:
-      docker:
-        image: docker:stable-dind
-        options: --privileged
-        volumes:
-          - /var/lib/docker
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
