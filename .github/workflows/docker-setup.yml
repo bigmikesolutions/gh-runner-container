@@ -11,7 +11,12 @@ on:
 
 jobs:
   check_image:
-    runs-on: development
+    runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: docker:dind
+        options: --privileged  
 
     steps:
       - name: Checkout code
