@@ -1,15 +1,22 @@
 #!/bin/bash
+set -e
 
-cd /home/github/actions-runner
+# Start the Docker daemon in the background
+dockerd-rootless.sh &
 
-./config.sh --url https://github.com/${ORGANIZATION} --token ${ACCESS_TOKEN} --name ${RUNNER_NAME} --runnergroup ${RUNNER_GROUP} --labels ${RUNNER_LABELS}
+# Wait for Docker daemon to start
+sleep 5
 
-cleanup() {
-    echo "Removing runner..."
-    ./config.sh remove --unattended --token ${ACCESS_TOKEN}
-}
+# Register the GitHub Actions runner
+if [ ! -f .runner ]; then
+    ./config.sh \
+        --url "${GITHUB_URL}" \
+        --token "${GITHUB_TOKEN}" \
+        --name "${RUNNER_NAME}" \
+        --labels "${RUNNER_LABELS}" \
+        --runnergroup "${RUNNER_GROUP}" \
+        --unattended
+fi
 
-trap 'cleanup; exit 130' INT
-trap 'cleanup; exit 143' TERM
-
-./run.sh & wait $!
+# Run the GitHub Actions runner
+exec ./run.sh

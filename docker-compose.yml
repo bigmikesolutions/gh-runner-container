@@ -2,15 +2,18 @@ version: '3'
 
 services:
   app:
-    build: .
-    platform: linux/x86_64
+    image: ghcr.io/actions-runner-controller/actions-runner-controller/actions-runner-dind:v2.321.0-ubuntu-20.04-8b36ea9
     container_name: gh-runner
-    privileged: true
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - runner-data:/runner
+    privileged: true 
     environment:
-      - ORGANIZATION=bigmikesolutions
       - RUNNER_GROUP=Development
       - RUNNER_NAME=michal-local-1
       - RUNNER_LABELS=development
-      - ACCESS_TOKEN=${ACCESS_TOKEN}
+      - RUNNER_ORG=bigmikesolutions
+      - RUNNER_TOKEN=${ACCESS_TOKEN}
+
+volumes:
+  runner-data:
+    driver: local

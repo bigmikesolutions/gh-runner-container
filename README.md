@@ -1,19 +1,21 @@
 # gh-runner-container
 
-Container for GitHub hosted runner. 
+Container set-up for GitHub hosted runner. 
 
 Set-up allows to run GitHub runner on self-host machine as a docker container instead of running it directly on OS.
 
+
+## Disclaimer
+
+Project was started using home-made docker but it was troublesome to maintain. 
+
+Since official [GitHub action runner image](https://github.com/actions-runner-controller/actions-runner-controller/pkgs/container/actions-runner-controller%2Factions-runner-dind) was found the whole solution is now based on it.
+
+
 ## Usage
 
-1) Go to organization settings -> actions -> runners -> new runner
-
-2) Get access token from GH page
-
-3) Run & register container 
-
 ```shell
-GH_ORG=${YOUR_GH_ORG} GH_ACCESS_TOKEN=${REGISTRATION_TOKEN} make start
+ACCESS_TOKEN=YOUR_TOKEN docker compose up
 ```
 
 ## Docs
@@ -22,3 +24,5 @@ GH_ORG=${YOUR_GH_ORG} GH_ACCESS_TOKEN=${REGISTRATION_TOKEN} make start
 * [GitHub actions](https://docs.github.com/en/enterprise-cloud@latest/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners)
 * [Runner VM images](https://github.com/actions/runner-images/tree/main)
 * [Runner images - manual image generation](https://github.com/actions/runner-images/blob/main/docs/create-image-and-azure-resources.md#manual-image-generation)
+* [GitHub action runner images](https://github.com/actions-runner-controller/actions-runner-controller/pkgs/container/actions-runner-controller%2Factions-runner-dind)
+* [GitHub action runner docker files](https://github.com/actions/actions-runner-controller/blob/master/runner/actions-runner-dind.ubuntu-20.04.dockerfile)
